@@ -4,13 +4,14 @@ import { createStore ,applyMiddleware} from 'redux'
 import { Provider } from 'react-redux'
 import './index.css';
 import App from './App';
+import rootReducer from './reducers'
 import * as serviceWorker from './serviceWorker';
 import logger from 'redux-logger'
 import reduxThunk from 'redux-thunk'
 
 import { BrowserRouter, Route, Link} from 'react-router-dom'
 
-const store = createStore(
+const store = createStore(rootReducer,
     applyMiddleware(reduxThunk, logger)
 );
 render(

@@ -21,7 +21,7 @@ const Header = () => {
                             <div className="row">
                                 <div className="grid_3 columns">
                                     <select className="custom-select" id="select-1">
-                                        <option selected="selected">EN</option>
+                                        <option >EN</option>
                                         <option>USA</option>
                                         <option>AUS</option>
                                         <option>UK</option>

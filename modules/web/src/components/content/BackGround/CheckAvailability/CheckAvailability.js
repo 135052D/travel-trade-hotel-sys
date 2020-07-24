@@ -1,6 +1,12 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import {selectStartDate} from "./action";
 
-const CheckAvailability = () => {
+
+const CheckAvailability = ({onChangeStartDate,searchRequests}) => {
+    console.log("-----------------------------------------",searchRequests);
     return(
         <div className="online_reservation">
             <div className="b_room">
@@ -13,7 +19,7 @@ const CheckAvailability = () => {
                         <li className="span1_of_1">
                             <h5>type of room:</h5>
                             <div className="section_room">
-                                <select id="country" onChange="change_country(this.value)"
+                                <select id="country"
                                         className="frm-field required">
                                     <option value="null">Select a type of room</option>
                                     <option value="null">Suite room</option>
@@ -26,9 +32,14 @@ const CheckAvailability = () => {
                             <h5>check-in-date:</h5>
                             <div className="book_date">
                                 <form>
-                                    <input className="date" id="datepicker" type="text"
-                                           defaultValue="DD/MM/YY" onFocus="this.value = '';"
-                                           onBlur="if (this.value == '') {this.value = 'DD/MM/YY';}"/>
+                                <DatePicker className="date" id="datepicker1"
+                                            dateFormat="yyyy/MM/dd"
+                                            selected={searchRequests.startDate && creteDate(searchRequests.startDate.split("T")[0] + "T18:30:00.000Z")}
+                                            onChange={onChangeStartDate}
+                                            disabledKeyboardNavigation={true}
+                                            // maxDate={searchRequests.endDate && creteDate(searchRequests.endDate.split("T")[0] + "T18:30:00.000Z")|| new Date()}
+
+                                />
                                 </form>
                             </div>
                         </li>
@@ -36,16 +47,22 @@ const CheckAvailability = () => {
                             <h5>check-out-date:</h5>
                             <div className="book_date">
                                 <form>
-                                    <input className="date" id="datepicker1" type="text"
-                                           defaultValue="DD/MM/YY" onFocus="this.value = '';"
-                                           onBlur="if (this.value == '') {this.value = 'DD/MM/YY';}"/>
+
+                                        <DatePicker className="date" id="datepicker1"
+                                                    dateFormat="yyyy/MM/dd"
+                                            // selected={searchRequests.startDate && creteDate(searchRequests.startDate.split("T")[0] + "T18:30:00.000Z")}
+                                            // onChange={onChangeEndDate}
+                                                    disabledKeyboardNavigation={true}
+                                            // maxDate={searchRequests.endDate && creteDate(searchRequests.endDate.split("T")[0] + "T18:30:00.000Z")|| new Date()}
+
+                                        />
                                 </form>
                             </div>
                         </li>
                         <li className="span1_of_2 left">
                             <h5>Adults:</h5>
                             <div className="section_room">
-                                <select id="country" onChange="change_country(this.value)"
+                                <select id="country"
                                         className="frm-field required">
                                     <option value="null">1</option>
                                     <option value="null">2</option>
@@ -70,4 +87,26 @@ const CheckAvailability = () => {
     );
 };
 
-export default CheckAvailability
+const creteDate = (date) => {
+    let newDate = new Date(date)
+    newDate.setDate(newDate.getDate() - 1);
+    return newDate;
+};
+
+const mapStateToProps = state => {
+    return {
+        searchRequests:state.search.searchRequest
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onChangeStartDate: (date) => {
+            date.setDate(date.getDate() + 1);
+            let dateString = JSON.stringify(date).split("T")[0].replace('"','') + "T00:00:00.000Z";
+            dispatch(selectStartDate(dateString))
+        }
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CheckAvailability)
