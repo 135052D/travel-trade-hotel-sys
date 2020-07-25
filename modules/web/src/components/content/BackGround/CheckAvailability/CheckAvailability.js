@@ -6,7 +6,6 @@ import {selectEndDate, selectStartDate} from "./action";
 
 
 const CheckAvailability = ({onChangeStartDate,searchRequests,onChangeEndDate}) => {
-    console.log("-----------------------------------------",searchRequests);
     return(
         <div className="online_reservation">
             <div className="b_room">
@@ -37,7 +36,8 @@ const CheckAvailability = ({onChangeStartDate,searchRequests,onChangeEndDate}) =
                                             selected={searchRequests.startDate && creteDate(searchRequests.startDate.split("T")[0] + "T18:30:00.000Z")}
                                             onChange={onChangeStartDate}
                                             disabledKeyboardNavigation={true}
-                                            maxDate={searchRequests.endDate && creteDate(searchRequests.endDate.split("T")[0] + "T18:30:00.000Z")|| new Date()}
+                                            minDate={new Date()}
+                                            maxDate={searchRequests.endDate && creteDate(searchRequests.endDate.split("T")[0] + "T18:30:00.000Z")}
 
                                 />
                                 </form>
