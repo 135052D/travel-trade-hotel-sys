@@ -2,10 +2,10 @@ import React from 'react'
 import {connect} from 'react-redux'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import {selectEndDate, selectStartDate} from "./action";
+import {selectEndDate, selectHotelName, selectStartDate} from "./action";
 
 
-const CheckAvailability = ({onChangeStartDate,searchRequests,onChangeEndDate}) => {
+const CheckAvailability = ({onChangeStartDate,searchRequests,onChangeEndDate,onChangeHotelName}) => {
     return(
         <div className="online_reservation">
             <div className="b_room">
@@ -18,12 +18,11 @@ const CheckAvailability = ({onChangeStartDate,searchRequests,onChangeEndDate}) =
                         <li className="span1_of_1">
                             <h5>type of room:</h5>
                             <div className="section_room">
-                                <select id="country"
-                                        className="frm-field required">
-                                    <option value="null">Select a type of room</option>
-                                    <option value="null">Suite room</option>
-                                    <option value="AX">Single room</option>
-                                    <option value="AX">Double room</option>
+                                <select id="country" className="frm-field required"  onChange={onChangeHotelName} value={searchRequests.hotelName}>
+                                    <option value="hotelName1">Hotel Name 1</option>
+                                    <option value="hotelName2">Hotel Name 2</option>
+                                    <option value="hotelName3">Hotel Name 3</option>
+                                    <option value="hotelName4">Hotel Name 4</option>
                                 </select>
                             </div>
                         </li>
@@ -97,7 +96,10 @@ const mapDispatchToProps = dispatch => {
             date.setDate(date.getDate() + 1);
             let dateString = JSON.stringify(date).split("T")[0].replace('"','') + "T00:00:00.000Z";
             dispatch(selectEndDate(dateString))
-        }
+        },
+        onChangeHotelName: (event) => {
+            dispatch(selectHotelName(event.target.value))
+        },
     }
 };
 
