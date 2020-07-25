@@ -14,7 +14,8 @@
     "redux-logger": "3.0.6",
     "react-redux": "6.0.0",
     "redux": "4.0.5",
-    "npm": "6.13.7"
+    "npm": "6.13.7",
+    "supertest": "3.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

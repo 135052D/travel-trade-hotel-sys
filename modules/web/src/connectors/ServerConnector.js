@@ -1,6 +1,6 @@
 import request from 'superagent';
 
-var baseUrl = 'http://localhost:8080';
+var baseUrl = 'http://127.0.0.1:8080/';
 
 
 

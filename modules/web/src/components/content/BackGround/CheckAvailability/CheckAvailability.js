@@ -1,11 +1,13 @@
+
 import React from 'react'
 import {connect} from 'react-redux'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {selectEndDate, selectHotelName, selectStartDate} from "./action";
+import {hotelDetails} from "../../../../source/hotelsDetails";
 
 
-const CheckAvailability = ({onChangeStartDate,searchRequests,onChangeEndDate,onChangeHotelName}) => {
+const CheckAvailability = ({onChangeStartDate,searchRequests,onChangeEndDate,onChangeHotelName,hotelDetails}) => {
     return(
         <div className="online_reservation">
             <div className="b_room">
@@ -60,7 +62,7 @@ const CheckAvailability = ({onChangeStartDate,searchRequests,onChangeEndDate,onC
                         <li className="span1_of_3">
                             <div className="date_btn">
                                 <form>
-                                    <input type="submit" defaultValue="book now"/>
+                                    <input type="submit" defaultValue="book now" onClick={hotelDetails.bind(this, searchRequests)}/>
                                 </form>
                             </div>
                         </li>
@@ -100,6 +102,9 @@ const mapDispatchToProps = dispatch => {
         onChangeHotelName: (event) => {
             dispatch(selectHotelName(event.target.value))
         },
+        hotelDetails: (searchRequests) => {
+            dispatch(hotelDetails(searchRequests))
+        }
     }
 };
 
