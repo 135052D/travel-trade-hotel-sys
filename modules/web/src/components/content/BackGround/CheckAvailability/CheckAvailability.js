@@ -58,18 +58,6 @@ const CheckAvailability = ({onChangeStartDate,searchRequests,onChangeEndDate}) =
                                 </form>
                             </div>
                         </li>
-                        <li className="span1_of_2 left">
-                            <h5>Adults:</h5>
-                            <div className="section_room">
-                                <select id="country"
-                                        className="frm-field required">
-                                    <option value="null">1</option>
-                                    <option value="null">2</option>
-                                    <option value="AX">3</option>
-                                    <option value="AX">4</option>
-                                </select>
-                            </div>
-                        </li>
                         <li className="span1_of_3">
                             <div className="date_btn">
                                 <form>
