@@ -2,10 +2,10 @@ import React from 'react'
 import {connect} from 'react-redux'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import {selectStartDate} from "./action";
+import {selectEndDate, selectStartDate} from "./action";
 
 
-const CheckAvailability = ({onChangeStartDate,searchRequests}) => {
+const CheckAvailability = ({onChangeStartDate,searchRequests,onChangeEndDate}) => {
     console.log("-----------------------------------------",searchRequests);
     return(
         <div className="online_reservation">
@@ -37,7 +37,7 @@ const CheckAvailability = ({onChangeStartDate,searchRequests}) => {
                                             selected={searchRequests.startDate && creteDate(searchRequests.startDate.split("T")[0] + "T18:30:00.000Z")}
                                             onChange={onChangeStartDate}
                                             disabledKeyboardNavigation={true}
-                                            // maxDate={searchRequests.endDate && creteDate(searchRequests.endDate.split("T")[0] + "T18:30:00.000Z")|| new Date()}
+                                            maxDate={searchRequests.endDate && creteDate(searchRequests.endDate.split("T")[0] + "T18:30:00.000Z")|| new Date()}
 
                                 />
                                 </form>
@@ -47,15 +47,14 @@ const CheckAvailability = ({onChangeStartDate,searchRequests}) => {
                             <h5>check-out-date:</h5>
                             <div className="book_date">
                                 <form>
+                                    <DatePicker className="date" id="datepicker1"
+                                                dateFormat="yyyy/MM/dd"
+                                                selected={searchRequests.endDate && creteDate(searchRequests.endDate.split("T")[0] + "T18:30:00.000Z")}
+                                                onChange={onChangeEndDate}
+                                                disabledKeyboardNavigation={true}
+                                                minDate={searchRequests.startDate && creteDate(searchRequests.startDate.split("T")[0] + "T18:30:00.000Z")|| new Date()}
 
-                                        <DatePicker className="date" id="datepicker1"
-                                                    dateFormat="yyyy/MM/dd"
-                                            // selected={searchRequests.startDate && creteDate(searchRequests.startDate.split("T")[0] + "T18:30:00.000Z")}
-                                            // onChange={onChangeEndDate}
-                                                    disabledKeyboardNavigation={true}
-                                            // maxDate={searchRequests.endDate && creteDate(searchRequests.endDate.split("T")[0] + "T18:30:00.000Z")|| new Date()}
-
-                                        />
+                                    />
                                 </form>
                             </div>
                         </li>
@@ -105,6 +104,11 @@ const mapDispatchToProps = dispatch => {
             date.setDate(date.getDate() + 1);
             let dateString = JSON.stringify(date).split("T")[0].replace('"','') + "T00:00:00.000Z";
             dispatch(selectStartDate(dateString))
+        },
+        onChangeEndDate: (date) => {
+            date.setDate(date.getDate() + 1);
+            let dateString = JSON.stringify(date).split("T")[0].replace('"','') + "T00:00:00.000Z";
+            dispatch(selectEndDate(dateString))
         }
     }
 };
