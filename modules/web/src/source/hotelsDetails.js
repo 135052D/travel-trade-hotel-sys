@@ -32,15 +32,33 @@ export const hotelDetails = (searchRequests) => {
 
     console.log("----------///////--------------------------",searchQuery);
 
-    return (dispatch,getState) => {
+    // return (dispatch,getState) => {
+    //
+    //     source.hotelDetails(searchQuery)
+    //         .catch(error => {
+    //             dispatch(hotelDetailsError(error))
+    //         })
+    //         .then(response => {
+    //             dispatch(hotelDetailsSuccess(response));
+    //             // dispatch(hotelDetails(response.results));
+    //             console.log("----------------------------",response)
+    //             return response
+    //         })
+    //         .catch(error => {
+    //             dispatch(hotelDetailsError(error))
+    //         });
+    //     dispatch(hotelDetailsPending());
+    // }
+    return (dispatch) => {
 
-        source.hotelDetails(searchQuery)
+        source.hotelDetails()
             .catch(error => {
                 dispatch(hotelDetailsError(error))
             })
             .then(response => {
                 dispatch(hotelDetailsSuccess(response));
-                dispatch(hotelDetails(response.results[0]));
+                // dispatch(hotelDetails(response.results));
+                console.log("----------------------------",response)
                 return response
             })
             .catch(error => {

@@ -7,9 +7,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.GeneratedValue;
+import java.util.List;
+
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-
 @RequestMapping("/")
 public class UserController {
 
@@ -31,6 +33,15 @@ public class UserController {
         System.out.println("--------------------"+user);
         return new ResponseEntity<>(userResponse, HttpStatus.CREATED);
     }
+
+    @GetMapping("/getUsers")
+    public ResponseEntity<User> getUsers() {
+        List<User> userResponse = userService.getUsers();
+        System.out.println("--------------------"+userResponse);
+        return new ResponseEntity(userResponse, HttpStatus.CREATED);
+    }
+
+
 
 
 }

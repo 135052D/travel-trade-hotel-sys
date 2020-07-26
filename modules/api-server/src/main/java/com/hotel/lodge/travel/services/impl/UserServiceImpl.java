@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service("bookService")
 @Transactional
@@ -22,6 +23,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User save(User user){
         return this.userRepository.save(user);
+    }
+
+    @Override
+    public List<User> getUsers() {
+        return this.userRepository.findAll();
     }
 
 }
