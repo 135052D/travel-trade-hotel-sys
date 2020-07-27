@@ -5,7 +5,7 @@ const SearchResult = ({result}) => {
         <div className="grid1_of_3">
             <div className="grid1_of_3_img">
                 <a href="#">
-                    <img src="images/pic2.jpg" alt=""/>
+                    <img src="images/room.png" alt=""/>
                 </a>
                 <h4>Room Type : {result.type}</h4>
                 <p>{result.noOfRooms} available</p>
