@@ -9,8 +9,8 @@ const ImageSlider = () => {
                         <img src="images/slider-bg.jpg" alt="" />
                         <div className="slide_content">
                             <div className="slide_content_wrap">
-                                <h4 className="title"><i className="bg" />Lorem Ipsum is simply <span className="hide">dummy text</span></h4>
-                                <h5 className="title1"><i className="bg" />Morbi justo <span className="hide">condimentum accumsan</span></h5>
+                                <h4 className="title"><i className="bg" />Travel Lodge Hotel</h4>
+                                <h5 className="title1"><i className="bg" />Wherever you travel, do it for less</h5>
                             </div>
                         </div>
                     </div>

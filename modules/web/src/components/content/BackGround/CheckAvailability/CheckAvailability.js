@@ -14,8 +14,8 @@ class CheckAvailability extends Component {
             <div className="online_reservation">
                 <div className="b_room">
                     <div className="booking_room">
-                        <h4>book a room online</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                        <h4>search availiability</h4>
+                        <p>search availiability to make your reservation</p>
                     </div>
                     <div className="reservation">
                         <ul>
@@ -65,8 +65,8 @@ class CheckAvailability extends Component {
                             <li className="span1_of_3">
                                 <div className="date_btn">
                                     <form>
-                                        <button type="button" defaultValue="book now"
-                                                onClick={hotelDetails.bind(this, searchRequests)}>Book Now</button>
+                                        <button type="button" defaultValue="search"
+                                                onClick={hotelDetails.bind(this, searchRequests)}>Search</button>
                                     </form>
                                 </div>
                             </li>
