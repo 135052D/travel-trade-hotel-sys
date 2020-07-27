@@ -70,10 +70,8 @@ class CheckAvailability extends Component {
                                     </form>
                                 </div>
                             </li>
-                            {/*<div className="clear"/>*/}
                         </ul>
                     </div>
-                    {/*<div className="clear"/>*/}
                 </div>
             </div>
         );
