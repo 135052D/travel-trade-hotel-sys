@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Footer from "./components/footer/Footer";
-import Header from "./components/header/Header";
-import ImageSlider from "./components/content/ImageSlider/ImageSlider";
-import BackGround from "./components/content/BackGround/BackGround";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import ImageSlider from "./components/Content/ImageSlider/ImageSlider";
+import BackGround from "./components/Content/BackGround/BackGround";
 
 class App extends Component {
     render() {
