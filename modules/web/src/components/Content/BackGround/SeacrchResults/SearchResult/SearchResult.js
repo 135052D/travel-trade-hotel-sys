@@ -7,8 +7,8 @@ const SearchResult = ({result}) => {
                 <a href="#">
                     <img src="images/pic2.jpg" alt=""/>
                 </a>
-                <h4>Room Type : {result.username}</h4>
-                <p>{result.email} available</p>
+                <h4>Room Type : {result.type}</h4>
+                <p>{result.noOfRooms} available</p>
             </div>
 
         </div>

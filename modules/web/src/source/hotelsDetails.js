@@ -24,34 +24,16 @@ export const hotelDetails = (searchRequests) => {
     // };
 
     const  searchQuery = {
-        id:10,
-        username : "shanika",
-        email :"shahhah@gmail.com",
-        password:"Test123#"
+        "hotelName":"tea bush ramboda",
+        "chekedIn" : "2020-07-31",
+        "chekedOut" :"2020-08-02"
     };
 
     console.log("----------///////--------------------------",searchQuery);
 
-    // return (dispatch,getState) => {
-    //
-    //     source.hotelDetails(searchQuery)
-    //         .catch(error => {
-    //             dispatch(hotelDetailsError(error))
-    //         })
-    //         .then(response => {
-    //             dispatch(hotelDetailsSuccess(response));
-    //             // dispatch(hotelDetails(response.results));
-    //             console.log("----------------------------",response)
-    //             return response
-    //         })
-    //         .catch(error => {
-    //             dispatch(hotelDetailsError(error))
-    //         });
-    //     dispatch(hotelDetailsPending());
-    // }
-    return (dispatch) => {
+    return (dispatch,getState) => {
 
-        source.hotelDetails()
+        source.hotelDetails(searchQuery)
             .catch(error => {
                 dispatch(hotelDetailsError(error))
             })
@@ -66,4 +48,22 @@ export const hotelDetails = (searchRequests) => {
             });
         dispatch(hotelDetailsPending());
     }
+
+    // return (dispatch) => {
+    //
+    //     source.hotelDetails()
+    //         .catch(error => {
+    //             dispatch(hotelDetailsError(error))
+    //         })
+    //         .then(response => {
+    //             dispatch(hotelDetailsSuccess(response));
+    //             // dispatch(hotelDetails(response.results));
+    //             console.log("----------------------------",response)
+    //             return response
+    //         })
+    //         .catch(error => {
+    //             dispatch(hotelDetailsError(error))
+    //         });
+    //     dispatch(hotelDetailsPending());
+    // }
 };
