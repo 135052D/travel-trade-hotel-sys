@@ -24,8 +24,8 @@ class CheckAvailability extends Component {
                                 <div className="section_room">
                                     <select id="country" className="frm-field required" onChange={onChangeHotelName}
                                             value={searchRequests.hotelName}>
-                                        <option value="hotelName1">Hotel Name 1</option>
-                                        <option value="hotelName2">Hotel Name 2</option>
+                                        <option value="">Select</option>
+                                        <option value="tea bush ramboda">tea bush ramboda</option>
                                         <option value="hotelName3">Hotel Name 3</option>
                                         <option value="hotelName4">Hotel Name 4</option>
                                     </select>
